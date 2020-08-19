@@ -38,11 +38,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()
-//                .and()
-//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .exceptionHandling()
-                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
+                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                .and()
+                .rememberMe()
+                .alwaysRemember(true)
+                .tokenValiditySeconds(30*5);
+
+
 
         httpSecurity.headers()
                 .frameOptions()
@@ -68,6 +72,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         public PasswordEncoder passwordEncoder () {
             return new BCryptPasswordEncoder();
         }
+
+
 
 
     }
