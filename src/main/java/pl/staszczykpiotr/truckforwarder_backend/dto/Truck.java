@@ -5,13 +5,13 @@ import pl.staszczykpiotr.truckforwarder_backend.interfaces.ITruck;
 import javax.persistence.*;
 
 
-@Entity(name = "trucks")
+@Entity
 @Table(name = "trucks")
 
 public class Truck implements ITruck{
 
-
     @Id
+    @Column(name = "id")
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer idtrucks;
 
@@ -38,52 +38,41 @@ public class Truck implements ITruck{
 
     };
 
-
     @Override
     public Integer getID() {
         return idtrucks;
     }
-
     @Override
     public String getName() {
         return name;
     }
-
     @Override
     public String getLoading() {
         return loadingtype;
     }
-
     @Override
     public Float getLength() {
         return length;
     }
-
     @Override
     public Float getWidth() {
         return width;
     }
-
     @Override
     public Float getHeight() {
         return height;
     }
-
     @Override
     public Float getWeight() {
         return weight;
     }
-
     @Override
     public Float getCapacity() { return capacity;
     }
-
     @Override
     public Float getPrice() {
         return price;
     }
-
-
     @Override
     public Byte getStatus() {
         return status;

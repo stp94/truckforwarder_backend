@@ -34,7 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             throws Exception {
         httpSecurity.csrf().disable();
         httpSecurity.authorizeRequests()
-                .antMatchers("/trucks/all","/session/player/**").permitAll()
+                .antMatchers("/trucks/all","/session/player/**","/order/all").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()
@@ -46,37 +46,29 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .alwaysRemember(true)
                 .tokenValiditySeconds(30*5);
 
-
-
         httpSecurity.headers()
                 .frameOptions()
                 .sameOrigin();
+
     }
 
 
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder builder, MyUserDetailService myUserDetailService) throws Exception {
-//        builder.jdbcAuthentication()
-//                .dataSource(dataSource)
-//                .usersByUsernameQuery("select username,password,enabled from users where username = ?")
-//                .authoritiesByUsernameQuery("select username,authority from authorities where username = ?")
-//
-//        ;
         builder.userDetailsService(myUserDetailService)
                 .passwordEncoder(passwordEncoder());
 
-
     }
 
-        @Bean
-        public PasswordEncoder passwordEncoder () {
+    @Bean
+    public PasswordEncoder passwordEncoder () {
             return new BCryptPasswordEncoder();
-        }
-
-
-
-
     }
+
+
+
+
+}
 
 
 

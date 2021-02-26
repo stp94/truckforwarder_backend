@@ -7,17 +7,28 @@ import javax.persistence.criteria.CriteriaBuilder;
 @Table (name = "bought_trucks")
 public class BoughtTrucks {
     @Id
+    @Column (name = "id")
     private Integer idbought_trucks;
 
     @Column
     private Integer idtrucks;
     private Integer idplayers;
-    private Integer condition;
+    private Integer life;
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
     private Boolean available;
     private String owner;
 
+    public BoughtTrucks(Integer idbought_trucks, Integer idtrucks, Integer idplayers, Integer condition, Boolean available, String owner){
+        this.idbought_trucks = idbought_trucks;
+        this.idtrucks = idtrucks;
+        this.idplayers = idplayers;
+        this.life = condition;
+        this.available = available;
+        this.owner = owner;
 
+    }
 
+    public BoughtTrucks(){}
 
     public String getOwner() {
         return owner;
@@ -51,12 +62,12 @@ public class BoughtTrucks {
         this.idplayers = idplayers;
     }
 
-    public Integer getCondition() {
-        return condition;
+    public Integer getLife() {
+        return life;
     }
 
-    public void setCondition(Integer condition) {
-        this.condition = condition;
+    public void setLife(Integer condition) {
+        this.life = condition;
     }
 
     public Boolean getAvailable() {

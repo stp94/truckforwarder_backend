@@ -48,9 +48,10 @@ public class UserController {
 
 
     @PostMapping()
-    public Player loginUser(@RequestBody String username, String password){
+    public Boolean loginUser(@RequestBody String username, String password){
 
-        return playerRepository.findByOwner(SecurityContextHolder.getContext().getAuthentication().getName());
+        //return playerRepository.findByOwner(SecurityContextHolder.getContext().getAuthentication().getName());
+        return SecurityContextHolder.getContext().getAuthentication().isAuthenticated();
 
     }
 

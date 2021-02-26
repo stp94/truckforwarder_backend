@@ -9,6 +9,7 @@ import javax.persistence.Table;
 @Table(name="players")
 public class Player {
     @Id
+    @Column (name ="id")
     private int idplayers;
 
     @Column
