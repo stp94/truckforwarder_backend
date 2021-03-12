@@ -63,11 +63,9 @@ public class PlayerController {
         String selectedTruckByUser;
             stringBuilder.append(SelectedTruck);
             stringBuilder.delete(0,18);
-            stringBuilder.delete(stringBuilder.length()-2,stringBuilder.length()); // Format String from Post to correctly form
+            stringBuilder.delete(stringBuilder.length()-2,stringBuilder.length());
         selectedTruckByUser = stringBuilder.toString();
-
         BoughtTrucks boughtTrucks = new BoughtTrucks();
-
             boughtTrucks.setIdbought_trucks(Math.toIntExact(boughtTrucksRepository.count() + 1));
             boughtTrucks.setIdtrucks(truckRepository.findByName(selectedTruckByUser).getID());
             boughtTrucks.setIdplayers(playerRepository.findByOwner(SecurityContextHolder.getContext().getAuthentication().getName()).getIdplayers());
@@ -77,12 +75,11 @@ public class PlayerController {
 
         boughtTrucksRepository.save(boughtTrucks); // Add Bought Truck
 
-
         playerRepository.findByOwner(SecurityContextHolder.getContext().getAuthentication().getName()).
                 setCash(playerRepository.findByOwner(SecurityContextHolder.getContext().getAuthentication().getName()).getCash() -
-                        truckRepository.findByName(selectedTruckByUser).getPrice()); // Set Cash Status
+                        truckRepository.findByName(selectedTruckByUser).getPrice());
 
-        playerRepository.save(playerRepository.findByOwner(SecurityContextHolder.getContext().getAuthentication().getName())); // Update Cash Status
+        playerRepository.save(playerRepository.findByOwner(SecurityContextHolder.getContext().getAuthentication().getName()));
 
 
 

@@ -34,7 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             throws Exception {
         httpSecurity.csrf().disable();
         httpSecurity.authorizeRequests()
-                .antMatchers("/trucks/all","/session/player/**","/order/all").permitAll()
+                .antMatchers("/trucks/all","/session/player/**","/order/all","/register","/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll()

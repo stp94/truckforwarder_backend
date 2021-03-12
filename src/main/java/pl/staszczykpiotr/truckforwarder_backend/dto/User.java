@@ -17,6 +17,16 @@ public class User {
 
         private String password;
 
+        public Boolean getEnabled() {
+                return enabled;
+        }
+
+        public void setEnabled(Boolean enabled) {
+                this.enabled = enabled;
+        }
+
+        private Boolean enabled;
+
         public Long getId() {
                 return id;
         }
@@ -39,5 +49,16 @@ public class User {
 
         public void setPassword(String password) {
                 this.password = password;
+        }
+
+//        public void register(String username, String password){
+//                this.username = username;
+//                this.password = password;
+//        }
+
+
+
+        public User(){
+
         }
 }

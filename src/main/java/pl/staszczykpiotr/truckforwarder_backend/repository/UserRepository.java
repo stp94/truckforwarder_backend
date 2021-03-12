@@ -8,4 +8,6 @@ import pl.staszczykpiotr.truckforwarder_backend.dto.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByUsername(String username);
+    User readAllByUsernameAndPassword(String username, String password);
+
 }

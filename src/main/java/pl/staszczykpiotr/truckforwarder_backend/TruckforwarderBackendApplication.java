@@ -21,7 +21,6 @@ import java.util.Collections;
 public class TruckforwarderBackendApplication {
 
 
-
     public static void main(String[] args) {
         SpringApplication.run(TruckforwarderBackendApplication.class, args);
     }
@@ -41,5 +40,6 @@ public class TruckforwarderBackendApplication {
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;
     }
+
 
 }
